@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import ProgressBar from './ProgressBar'
 function Form() {
 
     const [file, setFile] = useState(null)
@@ -21,10 +21,12 @@ function Form() {
         <form>
             <label>
             <input type="file" onChange={handleChage}/>
+            <span>+</span>
             </label>
             <div className="output">
                 { error && <div className='error'>{error}</div>}
                 { file && <div className='file'>{file.name}</div>}
+                { file && <ProgressBar file={file} setFile={setFile}/>}
             </div>
         </form>
     )
