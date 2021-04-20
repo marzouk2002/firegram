@@ -1,21 +1,22 @@
 import { useState, useEffect } from 'react'
-import { projectStorage, projectFirestore, timestamp } from '../firebase/config'
+import { projectFirestore } from '../firebase/config'
 
  const useFireStore = (collection) => {
     const [docs, setDocs] = useState([]);
 
     useEffect(() => {
         const unsub = projectFirestore.collection(collection)
-        .orderBy('creatAt', 'desc')
+        .orderBy('createAt', 'desc')
             .onSnapshot((snap) => {
                 let document = [];
                 snap.forEach(doc => {
                    document.push({
-                       ...doc.data,
+                       ...doc.data(),
                        id:doc.id
                    })
                 })
                 setDocs(document)
+                console.log(document)
             })
 
         return () => unsub();
@@ -23,3 +24,6 @@ import { projectStorage, projectFirestore, timestamp } from '../firebase/config'
 
     return { docs }
  }
+
+ 
+export default useFireStore
