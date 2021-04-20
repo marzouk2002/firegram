@@ -2,10 +2,10 @@ import firebase from 'firebase/app';
 import 'firebase/storage';
 import 'firebase/firestore';
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: "AIzaSyDPcyNz5RVQcthoShxqZMOBl9W7IgMtuB0",
   authDomain: "firegram-b203c.firebaseapp.com",
+  databaseURL: "https://firegram-b203c-default-rtdb.firebaseio.com",
   projectId: "firegram-b203c",
   storageBucket: "firegram-b203c.appspot.com",
   messagingSenderId: "191960281048",
